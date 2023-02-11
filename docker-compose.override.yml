@@ -3,10 +3,21 @@ services:
   app: # Имя сервиса
     build:
       dockerfile: Dockerfile.production
-    command: npm run dev
+    command: bash -c 'sleep 3 && npm start'
     ports: # Проброс портов
       - "8080:8080"
     volumes:
       # Текущая директория пробрасывается в директорию /app внутри контейнера
       # Путь внутри контейнера (после двоеточия) обязательно должен быть абсолютным
       - "./app:/app"
+
+  caddy:
+    image: caddy:2
+    depends_on:
+      - app
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - $PWD/services/caddy/Caddyfile:/etc/caddy/Caddyfile

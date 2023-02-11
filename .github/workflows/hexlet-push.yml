@@ -11,8 +11,15 @@ jobs:
       # экшен, выполняет какую-то задачу
       # checkout – клонирует репозиторий
       - uses: actions/checkout@v3
-      # run – произвольная bash-команда
-      # ls -la выведет содержимое текущего репозитория
+
+      # Устанавливаем Node.js
+      - uses: actions/setup-node@v1
+
+      - run: cd app
+      
+      # Ставим зависимости
+      - run: npm install
+
       - run: docker-compose -f docker-compose.yml -f docker-compose.override.yml up --abort-on-container-exit
       - run: docker-compose -f docker-compose.yml -f docker-compose.override.yml build app
       - run: docker-compose -f docker-compose.yml -f docker-compose.override.yml push app

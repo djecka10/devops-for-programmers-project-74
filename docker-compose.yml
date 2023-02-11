@@ -14,5 +14,6 @@ services:
       # Имя Docker-файла из которого будет собран образ
       dockerfile: Dockerfile
     # Команда, которая будет выполнена после старта сервиса
+    command: npm install
     command: npm ci
     command: npm test

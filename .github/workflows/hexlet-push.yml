@@ -15,8 +15,9 @@ jobs:
       # Устанавливаем Node.js
       - uses: actions/setup-node@v1
 
+      - run: mv .env.example .env
       - run: cd app
-      
+
       # Ставим зависимости
       - run: npm install
 

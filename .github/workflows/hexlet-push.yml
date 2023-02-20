@@ -21,4 +21,11 @@ jobs:
 
       - run: docker-compose -f docker-compose.yml up --abort-on-container-exit
       - run: docker-compose -f docker-compose.yml build app
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
       - run: docker-compose -f docker-compose.yml push app

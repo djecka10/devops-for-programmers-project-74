@@ -19,6 +19,6 @@ jobs:
       - run: cd app && npm install
       - run: cd app && npm ci
 
-      - run: docker-compose -f docker-compose.yml -f docker-compose.override.yml up --abort-on-container-exit
-      - run: docker-compose -f docker-compose.yml -f docker-compose.override.yml build app
-      - run: docker-compose -f docker-compose.yml -f docker-compose.override.yml push app
+      - run: docker-compose -f docker-compose.yml up --abort-on-container-exit
+      - run: docker-compose -f docker-compose.yml build app
+      - run: docker-compose -f docker-compose.yml push app

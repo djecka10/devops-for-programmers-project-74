@@ -3,7 +3,7 @@ services:
   app:
     build:
       dockerfile: Dockerfile.production
-    command: bash -c 'sleep 3 && npm start'
+    command: bash -c 'sleep 10 && npm start'
     ports: # Проброс портов
       - "8080:8080"
     volumes:

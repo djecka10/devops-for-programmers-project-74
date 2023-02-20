@@ -17,8 +17,6 @@ services:
       dockerfile: Dockerfile
     # Команда, которая будет выполнена после старта сервиса
     command: npm test
-    env_file:
-      - .env
   db:
     image: postgres:latest
     restart: always

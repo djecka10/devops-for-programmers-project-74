@@ -8,7 +8,10 @@ services:
   app: # Имя сервиса
     image: djecka/devops-for-programmers-project-74
     environment:
-      DATABASE_HOST: db
+      DATABASE_HOST: ${DATABASE_HOST:-db}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-password}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-username}
+      DATABASE_NAME: ${DATABASE_NAME:-name}
     depends_on:
       - db
     build:

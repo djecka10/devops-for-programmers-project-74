@@ -21,7 +21,7 @@ services:
       # Имя Docker-файла из которого будет собран образ
       dockerfile: Dockerfile
     # Команда, которая будет выполнена после старта сервиса
-    command: npm test
+    command: bash -c 'sleep 3 && npm test'
   db:
     image: postgres:latest
     restart: always

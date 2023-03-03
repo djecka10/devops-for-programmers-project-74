@@ -1,28 +1,14 @@
 compose:
 	docker-compose up -d
 
-compose-production:
-	docker-compose --file docker-compose.yml run production
-
-compose-build:
-	docker-compose build
-
-compose-logs:
-	docker-compose logs -f
-
 compose-down:
-	docker-compose down --remove-orphans || true
-
-compose-clear:
-	docker-compose down -v --remove-orphans || true
+	docker-compose down
 
 compose-stop:
-	docker-compose stop || true
+	docker-compose stop
 
 compose-restart:
 	docker-compose restart
-
-compose-setup: compose-down compose-build app-setup
 
 compose-ci:
 	docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
